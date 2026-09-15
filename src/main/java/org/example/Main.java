@@ -9,7 +9,7 @@ public class Main {
         char inicio;
         String nomeCliente;
         float valorCompra = 0 , totalRelatorio = 0, maiorValor = 0, menorValor = 999999999, valorMedio = 0;
-        int continuarAcao = 0, quantidadeCompras = 0;
+        int continuarAcao = 0, quantidadeCompras = 0, acimaCinquenta = 0;
 
         System.out.println("Bem vindo ao sistema de Registro de pedidos!");
         System.out.println("Deseja começar a registrar os pedidos dos clientes?[S/N]");
@@ -27,6 +27,9 @@ public class Main {
                 if (valorCompra == 0) {
                     System.out.println("Valor invalido. Coloque outro valor.");
 
+                }
+                if (valorCompra > 50){
+                    acimaCinquenta++;
                 }
                     if(valorCompra > maiorValor){
                         maiorValor = valorCompra;
@@ -48,9 +51,9 @@ public class Main {
                 do{
                 System.out.println("Deseja cadastrar outro pedido?\n1 - Sim\n2 - Não\n");
                 continuarAcao = input.nextInt();
-                if (continuarAcao != 1){
+                if (continuarAcao != 1 && continuarAcao != 2){
                     System.out.println("Opção inválida. Tente novamente");
-                }}while (continuarAcao != 1);
+                }}while (continuarAcao != 1 && continuarAcao != 2);
             }while(continuarAcao == 1);
 
             valorMedio = totalRelatorio / quantidadeCompras;
@@ -61,7 +64,7 @@ public class Main {
             System.out.println("Valor médio de pedidos: "+valorMedio);
             System.out.println("Maior compra: R$"+maiorValor);
             System.out.println("Menor compra: R$"+menorValor);
-
+            System.out.println("Compras acima de R$50: "+acimaCinquenta);
 
 
         }
