@@ -8,7 +8,7 @@ public class Main {
 
         char inicio;
         String nomeCliente, nomeMaior;
-        float valorCompra = 0 , totalRelatorio = 0, maiorValor = 0, menorValor = 999999999, valorMedio = 0, mediaAcimaTrinta = 0, valorTrintaMais = 0;
+        float valorCompra = 0 , totalRelatorio = 0, maiorValor = 0, menorValor = 0, valorMedio = 0, mediaAcimaTrinta = 0, valorTrintaMais = 0;
         int continuarAcao = 0, quantidadeCompras = 0, acimaCinquenta = 0, acimaTrinta = 0;
 
         System.out.println("Bem vindo ao sistema de Registro de pedidos!");
@@ -39,7 +39,7 @@ public class Main {
                         maiorValor = valorCompra;
                     }
 
-                    if(menorValor > valorCompra){
+                    if(menorValor > valorCompra || menorValor == 0){
                         menorValor = valorCompra;
                     }
                 }while(valorCompra == 0);
