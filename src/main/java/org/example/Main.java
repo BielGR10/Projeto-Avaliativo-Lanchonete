@@ -1,17 +1,69 @@
 package org.example;
+import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        Scanner input = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+        char inicio;
+        String nomeCliente;
+        float valorCompra = 0 , totalRelatorio = 0, maiorValor = 0, menorValor = 999999999, valorMedio = 0;
+        int continuarAcao = 0, quantidadeCompras = 0;
+
+        System.out.println("Bem vindo ao sistema de Registro de pedidos!");
+        System.out.println("Deseja começar a registrar os pedidos dos clientes?[S/N]");
+        inicio = input.next().charAt(0);
+
+        if (inicio == 's' || inicio == 'S'){
+            do {
+                System.out.println("Qual o nome do cliente?");
+                input.nextLine();
+                nomeCliente = input.nextLine();
+
+                do{
+                System.out.print("Qual o valor da compra?\nR$");
+                valorCompra = input.nextFloat();
+                if (valorCompra == 0) {
+                    System.out.println("Valor invalido. Coloque outro valor.");
+
+                }
+                    if(valorCompra > maiorValor){
+                        maiorValor = valorCompra;
+                    }
+
+                    if(menorValor > valorCompra){
+                        menorValor = valorCompra;
+                    }
+                }while(valorCompra == 0);
+
+
+
+                totalRelatorio += valorCompra;
+
+                System.out.println("\nNome do cliente: "+nomeCliente);
+                System.out.println("Valor da compra: R$"+valorCompra);
+                quantidadeCompras++;
+
+                do{
+                System.out.println("Deseja cadastrar outro pedido?\n1 - Sim\n2 - Não\n");
+                continuarAcao = input.nextInt();
+                if (continuarAcao != 1){
+                    System.out.println("Opção inválida. Tente novamente");
+                }}while (continuarAcao != 1);
+            }while(continuarAcao == 1);
+
+            valorMedio = totalRelatorio / quantidadeCompras;
+
+            System.out.println("RELATÓRIO DE COMPRAS");
+            System.out.println("\nQuantidade de pedidos: "+quantidadeCompras);
+            System.out.println("Valor total vendido: R$"+totalRelatorio);
+            System.out.println("Valor médio de pedidos: "+valorMedio);
+            System.out.println("Maior compra: R$"+maiorValor);
+            System.out.println("Menor compra: R$"+menorValor);
+
+
+
         }
     }
 }
