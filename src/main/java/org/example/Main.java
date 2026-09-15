@@ -8,8 +8,8 @@ public class Main {
 
         char inicio;
         String nomeCliente, nomeMaior;
-        float valorCompra = 0 , totalRelatorio = 0, maiorValor = 0, menorValor = 999999999, valorMedio = 0;
-        int continuarAcao = 0, quantidadeCompras = 0, acimaCinquenta = 0;
+        float valorCompra = 0 , totalRelatorio = 0, maiorValor = 0, menorValor = 999999999, valorMedio = 0, mediaAcimaTrinta = 0, valorTrintaMais = 0;
+        int continuarAcao = 0, quantidadeCompras = 0, acimaCinquenta = 0, acimaTrinta = 0;
 
         System.out.println("Bem vindo ao sistema de Registro de pedidos!");
         System.out.println("Deseja começar a registrar os pedidos dos clientes?[S/N]");
@@ -30,6 +30,10 @@ public class Main {
                 }
                 if (valorCompra > 50){
                     acimaCinquenta++;
+                }
+                if(valorCompra > 30){
+                    valorTrintaMais =+ valorCompra;
+                    acimaTrinta++;
                 }
                     if(valorCompra > maiorValor){
                         maiorValor = valorCompra;
@@ -56,6 +60,8 @@ public class Main {
                 }}while (continuarAcao != 1 && continuarAcao != 2);
             }while(continuarAcao == 1);
 
+            mediaAcimaTrinta = valorTrintaMais / acimaTrinta;
+            float restoMeta = totalRelatorio - 500;
             valorMedio = totalRelatorio / quantidadeCompras;
 
             System.out.println("RELATÓRIO DE COMPRAS");
@@ -65,8 +71,12 @@ public class Main {
             System.out.println("Maior compra: R$"+maiorValor);
             System.out.println("Menor compra: R$"+menorValor);
             System.out.println("Compras acima de R$50: "+acimaCinquenta);
+            System.out.println("Média de compras acima de R$"+mediaAcimaTrinta);
 
-            float restoMeta = totalRelatorio - 500;
+
+
+
+
             if (totalRelatorio >= 500){
                 System.out.println("Meta atingida! Parabéns!");
             }else{
