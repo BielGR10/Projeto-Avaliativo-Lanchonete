@@ -7,7 +7,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         char inicio;
-        String nomeCliente;
+        String nomeCliente, nomeMaior;
         float valorCompra = 0 , totalRelatorio = 0, maiorValor = 0, menorValor = 999999999, valorMedio = 0;
         int continuarAcao = 0, quantidadeCompras = 0, acimaCinquenta = 0;
 
@@ -66,6 +66,12 @@ public class Main {
             System.out.println("Menor compra: R$"+menorValor);
             System.out.println("Compras acima de R$50: "+acimaCinquenta);
 
+            float restoMeta = totalRelatorio - 500;
+            if (totalRelatorio >= 500){
+                System.out.println("Meta atingida! Parabéns!");
+            }else{
+                System.out.println("Faltaram apenas R$"+restoMeta+" para a meta.");
+            }
 
         }
     }
